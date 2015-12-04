@@ -4,7 +4,7 @@ import java.net.URL
 import java.util.ResourceBundle
 import javafx.application.Application
 import javafx.fxml.{FXML, FXMLLoader, Initializable}
-import javafx.scene.control.TextField
+import javafx.scene.control.{Label, TextField}
 import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
 
@@ -47,4 +47,13 @@ class ttt extends javafx.application.Application{
     stage.getScene.getStylesheets.add(css)
   }
 
+}
+
+class tttController extends Initializable{
+  @FXML var L_TopLeft: Label = _
+
+  override def initialize(location: URL, resources: ResourceBundle): Unit = {
+  }
+
+  @FXML def testClick(): Unit = L_TopLeft.setText("O")
 }

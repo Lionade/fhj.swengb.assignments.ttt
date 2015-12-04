@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fhj.swengb.assignments.ttt.shysi.tttController">
    <center>
        <GridPane layoutX="8.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="367.0" BorderPane.alignment="TOP_LEFT">
            <columnConstraints>
@@ -19,7 +19,7 @@
                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
            </rowConstraints>
            <children>
-               <Label fx:id="L_TopLeft" alignment="CENTER" prefHeight="106.0" prefWidth="136.0" text="L_TopLeft" />
+               <Label fx:id="L_TopLeft" alignment="CENTER" onMouseClicked="#testClick" prefHeight="106.0" prefWidth="136.0" text="L_TopLeft" />
                <Label fx:id="L_TopCenter" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="106.0" prefWidth="136.0" text="L_TopCenter" GridPane.columnIndex="1" />
                <Label fx:id="L_TopRight" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="106.0" prefWidth="136.0" text="L_TopRight" GridPane.columnIndex="2" />
                <Label fx:id="L_MiddleLeft" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="106.0" prefWidth="136.0" text="L_MiddleLeft" GridPane.rowIndex="1" />
