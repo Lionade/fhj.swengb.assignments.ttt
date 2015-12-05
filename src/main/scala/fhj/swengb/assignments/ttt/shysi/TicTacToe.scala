@@ -63,7 +63,9 @@ object TicTacToe {
     * creates an empty tic tac toe game
     * @return
     */
-  def apply(): TicTacToe = ???
+  def apply(): TicTacToe = {
+    TicTacToe(null)
+  }
 
   /**
     * For a given tic tac toe game, this function applies all moves to the game.
@@ -107,8 +109,36 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     *
     * @return
     */
-  def asString(): String = ???
+  // Automatisch leer machen und falls Wert vorhanden den entsprechenden Index-Wert ändern
+  // 16,20,24
+  // 44,48,52
+  // 72,76,80
+  def asString(): String = {
+    val indexs = Map (0->16, 1->20, 2->24,
+                      3->44, 4->48, 5->52,
+                      6->72, 7->76, 8->80)
+    var s: String =
+        "|---|---|---|\n" +
+        "|   |   |   |\n" +
+        "|---|---|---|\n" +
+        "|   |   |   |\n" +
+        "|---|---|---|\n" +
+        "|   |   |   |\n" +
+        "|---|---|---|\n"
 
+
+
+    for((k,v) <- moveHistory){
+      if(v == PlayerA){
+        s = s.updated(indexs(k.idx),"O").mkString
+      }
+      else{
+        s = s.updated(indexs(k.idx),"X").mkString
+      }
+    }
+    s
+  }
+/*
   /**
     * is true if the game is over.
     *
@@ -138,11 +168,11 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
   /**
     * returns a copy of the current game, but with the move applied to the tic tac toe game.
     *
-    * @param move to be played
+    * @param p to be played
     * @param player the player
     * @return
     */
-  def turn(p: TMove, player: Player): TicTacToe = ???
+  def turn(p: TMove, player: Player): TicTacToe = ???*/
 
 }
 
