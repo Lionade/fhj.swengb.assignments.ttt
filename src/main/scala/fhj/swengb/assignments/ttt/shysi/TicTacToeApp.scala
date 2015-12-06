@@ -26,8 +26,8 @@ object ttt {
 
 class ttt extends javafx.application.Application{
 
-  val Fxml = "/main/resources/fhj/swengb/assignments/ttt/TicTacToeApp.fxml"
-  val Css = "/main/resources/fhj/swengb/assignments/ttt/TicTacToeApp.css"
+  val Fxml = "/fhj/swengb/assignments/ttt/TicTacToeApp.fxml"
+  val Css = "/fhj/swengb/assignments/ttt/TicTacToeApp.css"
 
   def mkFxmlLoader(fxml: String): FXMLLoader = {
     new FXMLLoader(getClass.getResource(fxml))
