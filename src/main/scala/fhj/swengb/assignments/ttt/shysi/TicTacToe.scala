@@ -127,7 +127,6 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
         "|---|---|---|\n"
 
 
-
     for((k,v) <- moveHistory){
       if(v == PlayerA){
         s = s.updated(indexs(k.idx),"O").mkString
@@ -138,7 +137,7 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     }
     s
   }
-/*
+
   /**
     * is true if the game is over.
     *
@@ -149,7 +148,13 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
   /**
     * the moves which are still to be played on this tic tac toe.
     */
-  val remainingMoves: Set[TMove] = ???
+  val remainingMoves: Set[TMove] = {
+    // Diff moveHistory with Set (all moves)
+    val set: Set[TMove] = Set(TopLeft, TopCenter, TopRight,
+      MiddleLeft, MiddleCenter, MiddleRight,
+      BottomLeft, BottomCenter, BottomRight)
+    set -- moveHistory.keySet
+  }
 
   /**
     * given a tic tac toe game, this function returns all
@@ -172,7 +177,7 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * @param player the player
     * @return
     */
-  def turn(p: TMove, player: Player): TicTacToe = ???*/
+  def turn(p: TMove, player: Player): TicTacToe = ???
 
 }
 
