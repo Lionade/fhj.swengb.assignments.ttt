@@ -75,13 +75,18 @@ object TicTacToe {
     * @param moves
     * @return
     */
-  def play(t: TicTacToe, moves: Seq[TMove]): TicTacToe = ???
+  def play(t: TicTacToe, moves: Seq[TMove]): TicTacToe = {
+    ???
+  }
 
   /**
     * creates all possible games.
     * @return
     */
-  def mkGames(): Map[Seq[TMove], TicTacToe] = ???
+  def mkGames(): Map[Seq[TMove], TicTacToe] = {
+    // Rekusiver aufruf von nextGames?
+    ???
+  }
 
 }
 
@@ -161,14 +166,28 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * games which can be derived by making the next turn. that means one of the
     * possible turns is taken and added to the set.
     */
-  lazy val nextGames: Set[TicTacToe] = ???
+  // Player wird nicht gewechselt
+  lazy val nextGames: Set[TicTacToe] = {
+    var set: Set[TicTacToe] = Set(null)
+    for(t <- remainingMoves){
+      if (nextPlayer == PlayerA){
+        set += TicTacToe(moveHistory + (t -> PlayerA), PlayerB)
+      }
+      else{
+        set += TicTacToe(moveHistory + (t -> PlayerB), PlayerA)
+      }
+    }
+    set
+  }
 
   /**
     * Either there is no winner, or PlayerA or PlayerB won the game.
     *
     * The set of moves contains all moves which contributed to the result.
     */
-  def winner: Option[(Player, Set[TMove])] = ???
+  def winner: Option[(Player, Set[TMove])] = Set[TMove] match{
+    case (PlayerA, )
+  }
 
   /**
     * returns a copy of the current game, but with the move applied to the tic tac toe game.
@@ -177,7 +196,20 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * @param player the player
     * @return
     */
-  def turn(p: TMove, player: Player): TicTacToe = ???
+  def turn(p: TMove, player: Player): TicTacToe = {
+    moveHistory + (p -> player)
+    this
+  }
+
+  lazy val cross1: Set[TMove] = Set(TopLeft, MiddleCenter, BottomRight)
+  lazy val cross2: Set[TMove] = Set(TopRight, MiddleCenter, BottomLeft)
+  lazy val horiline1: Set[TMove] = Set(TopLeft, TopCenter, TopRight)
+  lazy val horiline2: Set[TMove] = Set(MiddleLeft, MiddleCenter, MiddleRight)
+  lazy val horiline3: Set[TMove] = Set(BottomLeft, BottomCenter, BottomRight)
+  lazy val vertline1: Set[TMove] = Set(TopLeft, MiddleLeft, BottomLeft)
+  lazy val vertline2: Set[TMove] = Set(TopCenter, MiddleCenter, BottomCenter)
+  lazy val vertline3: Set[TMove] = Set(TopRight, MiddleRight, BottomRight)
+
 
 }
 
