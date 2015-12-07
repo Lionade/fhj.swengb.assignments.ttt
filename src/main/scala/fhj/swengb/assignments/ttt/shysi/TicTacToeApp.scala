@@ -8,6 +8,7 @@ import javafx.scene.control.{Label, TextField}
 import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
 
+import scala.collection.Set
 import scala.util.control.NonFatal
 
 /**
@@ -17,9 +18,11 @@ import scala.util.control.NonFatal
 object ttt {
   def main (args: Array[String]){
     // Test Map
-    val m: Map[TMove, Player] = Map(TopLeft -> PlayerA, TopCenter -> PlayerB, TopRight -> PlayerA)
+    val m: Map[TMove, Player] = Map(BottomCenter -> PlayerA, TopCenter -> PlayerB, TopRight -> PlayerA)
     val t = TicTacToe(m)
     println(t.asString())
+    val test = t.winner
+    val keineahung = "test"
     //Application.launch(classOf[ttt], args: _*)
   }
 }

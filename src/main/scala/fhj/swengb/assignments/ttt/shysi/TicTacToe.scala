@@ -148,7 +148,7 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     *
     * The game is over if either of a player wins or there is a draw.
     */
-  val gameOver : Boolean = ???
+ // val gameOver : Boolean = ???
 
   /**
     * the moves which are still to be played on this tic tac toe.
@@ -185,8 +185,42 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     *
     * The set of moves contains all moves which contributed to the result.
     */
-  def winner: Option[(Player, Set[TMove])] = Set[TMove] match{
-    case (PlayerA, )
+  def winner: Option[(Player, Set[TMove])] = {
+    // zuerste überprüfen ob positionen besetzt dann if(moveHistory(set(0)) == moveHistory(set(1)) = moveHistory(set(2)))
+    //
+    if(moveHistory.getOrElse(diag1(0), "").equals(moveHistory.getOrElse(diag1(1), None)) &&
+      moveHistory.getOrElse(diag1(1), None).equals(moveHistory.getOrElse(diag1(2), None)))
+      Some((moveHistory(diag1.head), diag1.toSet))
+
+    else if(moveHistory.getOrElse(diag2(0), "").equals(moveHistory.getOrElse(diag2(1), None)) &&
+      moveHistory.getOrElse(diag2(1), None).equals(moveHistory.getOrElse(diag2(2), None)))
+      Some((moveHistory(diag2.head), diag2.toSet))
+
+    else if(moveHistory.getOrElse(horiline1(0), "").equals(moveHistory.getOrElse(horiline1(1), None)) &&
+      moveHistory.getOrElse(horiline1(1), None).equals(moveHistory.getOrElse(horiline1(2), None)) )
+      Some((moveHistory(horiline1.head), horiline1.toSet))
+
+    else if(moveHistory.getOrElse(horiline2(0), "").equals(moveHistory.getOrElse(horiline2(1), None)) &&
+      moveHistory.getOrElse(horiline2(1), None).equals(moveHistory.getOrElse(horiline2(2), None)) )
+      Some((moveHistory(horiline2.head), horiline2.toSet))
+
+    else if(moveHistory.getOrElse(horiline3(0), "").equals(moveHistory.getOrElse(horiline3(1), None)) &&
+      moveHistory.getOrElse(horiline3(1), None).equals(moveHistory.getOrElse(horiline3(2), None)) )
+      Some((moveHistory(horiline3.head), horiline3.toSet))
+
+    else if(moveHistory.getOrElse(vertline1(0), "").equals(moveHistory.getOrElse(vertline1(1), None)) &&
+      moveHistory.getOrElse(vertline1(1), None).equals(moveHistory.getOrElse(vertline1(2), None)) )
+      Some((moveHistory(vertline1.head), vertline1.toSet))
+
+    else if(moveHistory.getOrElse(vertline2(0), "").equals(moveHistory.getOrElse(vertline2(1), None)) &&
+      moveHistory.getOrElse(vertline2(1), None).equals(moveHistory.getOrElse(vertline2(2), None)) )
+      Some((moveHistory(vertline2.head), vertline2.toSet))
+
+    else if(moveHistory.getOrElse(vertline3(0), "").equals(moveHistory.getOrElse(vertline3(1), None)) &&
+      moveHistory.getOrElse(vertline3(1), None).equals(moveHistory.getOrElse(vertline3(2), None)) )
+      Some((moveHistory(vertline3.head), vertline3.toSet))
+
+    else None
   }
 
   /**
@@ -201,14 +235,14 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     this
   }
 
-  lazy val cross1: Set[TMove] = Set(TopLeft, MiddleCenter, BottomRight)
-  lazy val cross2: Set[TMove] = Set(TopRight, MiddleCenter, BottomLeft)
-  lazy val horiline1: Set[TMove] = Set(TopLeft, TopCenter, TopRight)
-  lazy val horiline2: Set[TMove] = Set(MiddleLeft, MiddleCenter, MiddleRight)
-  lazy val horiline3: Set[TMove] = Set(BottomLeft, BottomCenter, BottomRight)
-  lazy val vertline1: Set[TMove] = Set(TopLeft, MiddleLeft, BottomLeft)
-  lazy val vertline2: Set[TMove] = Set(TopCenter, MiddleCenter, BottomCenter)
-  lazy val vertline3: Set[TMove] = Set(TopRight, MiddleRight, BottomRight)
+  lazy val diag1: List[TMove] = List(TopLeft, MiddleCenter, BottomRight)
+  lazy val diag2: List[TMove] = List(TopRight, MiddleCenter, BottomLeft)
+  lazy val horiline1: List[TMove] = List(TopLeft, TopCenter, TopRight)
+  lazy val horiline2: List[TMove] = List(MiddleLeft, MiddleCenter, MiddleRight)
+  lazy val horiline3: List[TMove] = List(BottomLeft, BottomCenter, BottomRight)
+  lazy val vertline1: List[TMove] = List(TopLeft, MiddleLeft, BottomLeft)
+  lazy val vertline2: List[TMove] = List(TopCenter, MiddleCenter, BottomCenter)
+  lazy val vertline3: List[TMove] = List(TopRight, MiddleRight, BottomRight)
 
 
 }
