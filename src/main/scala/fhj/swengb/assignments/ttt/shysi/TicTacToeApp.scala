@@ -18,11 +18,13 @@ import scala.util.control.NonFatal
 object ttt {
   def main (args: Array[String]){
     // Test Map
-    val m: Map[TMove, Player] = Map(BottomCenter -> PlayerA, TopCenter -> PlayerB, TopRight -> PlayerA)
+    val m: Map[TMove, Player] = Map(TopLeft -> PlayerA, TopCenter -> PlayerB, TopRight -> PlayerA,
+                                    MiddleLeft -> PlayerB, MiddleCenter -> PlayerA, MiddleRight -> PlayerB,
+                                    BottomLeft -> PlayerB, BottomCenter -> PlayerA, BottomRight -> PlayerB)
     val t = TicTacToe(m)
     println(t.asString())
-    val test = t.winner
-    val keineahung = "test"
+    val test = t.remainingMoves
+    //val test = t.winner
     //Application.launch(classOf[ttt], args: _*)
   }
 }

@@ -148,7 +148,10 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     *
     * The game is over if either of a player wins or there is a draw.
     */
- // val gameOver : Boolean = ???
+  val gameOver : Boolean = {
+    if(winner == None) false
+    else true
+  }
 
   /**
     * the moves which are still to be played on this tic tac toe.
@@ -167,6 +170,7 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * possible turns is taken and added to the set.
     */
   // Player wird nicht gewechselt
+  // turn-function anstatt selber
   lazy val nextGames: Set[TicTacToe] = {
     var set: Set[TicTacToe] = Set(null)
     for(t <- remainingMoves){
@@ -219,6 +223,11 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     else if(moveHistory.getOrElse(vertline3(0), "").equals(moveHistory.getOrElse(vertline3(1), None)) &&
       moveHistory.getOrElse(vertline3(1), None).equals(moveHistory.getOrElse(vertline3(2), None)) )
       Some((moveHistory(vertline3.head), vertline3.toSet))
+
+      //Draw
+    else if(remainingMoves.isEmpty){
+      Some((null, moveHistory.keySet))
+    }
 
     else None
   }
