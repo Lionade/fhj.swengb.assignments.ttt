@@ -143,15 +143,6 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     s
   }
 
-  /**
-    * is true if the game is over.
-    *
-    * The game is over if either of a player wins or there is a draw.
-    */
-  val gameOver : Boolean = {
-    if(winner == None) false
-    else true
-  }
 
   /**
     * the moves which are still to be played on this tic tac toe.
@@ -165,6 +156,17 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
   }
 
   /**
+   * is true if the game is over.
+   *
+   * The game is over if either of a player wins or there is a draw.
+   */
+  val gameOver : Boolean = {
+    if(remainingMoves.isEmpty) true
+    else if(winner != None) true
+    else false
+  }
+
+  /**
     * given a tic tac toe game, this function returns all
     * games which can be derived by making the next turn. that means one of the
     * possible turns is taken and added to the set.
@@ -175,10 +177,10 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     var set: Set[TicTacToe] = Set(null)
     for(t <- remainingMoves){
       if (nextPlayer == PlayerA){
-        set += TicTacToe(moveHistory + (t -> PlayerA), PlayerB)
+        set += turn(t, PlayerB)
       }
       else{
-        set += TicTacToe(moveHistory + (t -> PlayerB), PlayerA)
+        set += turn(t, PlayerA)
       }
     }
     set
@@ -191,45 +193,31 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     */
   def winner: Option[(Player, Set[TMove])] = {
     // zuerste überprüfen ob positionen besetzt dann if(moveHistory(set(0)) == moveHistory(set(1)) = moveHistory(set(2)))
-    //
-    if(moveHistory.getOrElse(diag1(0), "").equals(moveHistory.getOrElse(diag1(1), None)) &&
-      moveHistory.getOrElse(diag1(1), None).equals(moveHistory.getOrElse(diag1(2), None)))
-      Some((moveHistory(diag1.head), diag1.toSet))
 
-    else if(moveHistory.getOrElse(diag2(0), "").equals(moveHistory.getOrElse(diag2(1), None)) &&
-      moveHistory.getOrElse(diag2(1), None).equals(moveHistory.getOrElse(diag2(2), None)))
-      Some((moveHistory(diag2.head), diag2.toSet))
 
-    else if(moveHistory.getOrElse(horiline1(0), "").equals(moveHistory.getOrElse(horiline1(1), None)) &&
-      moveHistory.getOrElse(horiline1(1), None).equals(moveHistory.getOrElse(horiline1(2), None)) )
-      Some((moveHistory(horiline1.head), horiline1.toSet))
+    if(win(diag1)) Some((moveHistory(diag1.head), diag1.toSet))
+    else if(win(diag2)) Some((moveHistory(diag2.head), diag2.toSet))
+    else if(win(horiline1)) Some((moveHistory(horiline1.head), horiline1.toSet))
+    else if(win(horiline2)) Some((moveHistory(horiline2.head), horiline2.toSet))
+    else if(win(horiline3)) Some((moveHistory(horiline3.head), horiline3.toSet))
+    else if(win(vertline1)) Some((moveHistory(vertline1.head), vertline1.toSet))
+    else if(win(vertline2)) Some((moveHistory(vertline2.head), vertline2.toSet))
+    else if(win(vertline3)) Some((moveHistory(vertline3.head), vertline3.toSet))
 
-    else if(moveHistory.getOrElse(horiline2(0), "").equals(moveHistory.getOrElse(horiline2(1), None)) &&
-      moveHistory.getOrElse(horiline2(1), None).equals(moveHistory.getOrElse(horiline2(2), None)) )
-      Some((moveHistory(horiline2.head), horiline2.toSet))
-
-    else if(moveHistory.getOrElse(horiline3(0), "").equals(moveHistory.getOrElse(horiline3(1), None)) &&
-      moveHistory.getOrElse(horiline3(1), None).equals(moveHistory.getOrElse(horiline3(2), None)) )
-      Some((moveHistory(horiline3.head), horiline3.toSet))
-
-    else if(moveHistory.getOrElse(vertline1(0), "").equals(moveHistory.getOrElse(vertline1(1), None)) &&
-      moveHistory.getOrElse(vertline1(1), None).equals(moveHistory.getOrElse(vertline1(2), None)) )
-      Some((moveHistory(vertline1.head), vertline1.toSet))
-
-    else if(moveHistory.getOrElse(vertline2(0), "").equals(moveHistory.getOrElse(vertline2(1), None)) &&
-      moveHistory.getOrElse(vertline2(1), None).equals(moveHistory.getOrElse(vertline2(2), None)) )
-      Some((moveHistory(vertline2.head), vertline2.toSet))
-
-    else if(moveHistory.getOrElse(vertline3(0), "").equals(moveHistory.getOrElse(vertline3(1), None)) &&
-      moveHistory.getOrElse(vertline3(1), None).equals(moveHistory.getOrElse(vertline3(2), None)) )
-      Some((moveHistory(vertline3.head), vertline3.toSet))
-
-      //Draw
-    else if(remainingMoves.isEmpty){
-      Some((null, moveHistory.keySet))
-    }
-
+    // Kein Winner
     else None
+  }
+
+  // Testing if row has a winner
+  def win(list: List[TMove]): Boolean = {
+    if(moveHistory.contains(list(0)) && moveHistory.contains(list(1)) && moveHistory.contains(list(2))) {
+      if (moveHistory.getOrElse(list(0), "").equals(moveHistory.getOrElse(list(1), None)) &&
+        moveHistory.getOrElse(list(1), None).equals(moveHistory.getOrElse(list(2), None))) {
+        true
+      }
+      else false
+    }
+    else false
   }
 
   /**
@@ -240,8 +228,8 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * @return
     */
   def turn(p: TMove, player: Player): TicTacToe = {
-    moveHistory + (p -> player)
-    this
+    if(player == PlayerA) TicTacToe(moveHistory + (p -> player),PlayerB)
+    else TicTacToe(moveHistory + (p -> player),PlayerA)
   }
 
   lazy val diag1: List[TMove] = List(TopLeft, MiddleCenter, BottomRight)
