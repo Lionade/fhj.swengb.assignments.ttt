@@ -19,15 +19,15 @@
                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
            </rowConstraints>
            <children>
-               <Label fx:id="L_TopLeft" alignment="CENTER" onMouseClicked="#testClick" prefHeight="106.0" prefWidth="136.0" text="L_TopLeft" />
-               <Label fx:id="L_TopCenter" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="106.0" prefWidth="136.0" text="L_TopCenter" GridPane.columnIndex="1" />
-               <Label fx:id="L_TopRight" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="106.0" prefWidth="136.0" text="L_TopRight" GridPane.columnIndex="2" />
-               <Label fx:id="L_MiddleLeft" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="106.0" prefWidth="136.0" text="L_MiddleLeft" GridPane.rowIndex="1" />
-               <Label fx:id="L_MiddleCenter" alignment="CENTER" prefHeight="106.0" prefWidth="136.0" text="L_MiddleCenter" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-               <Label fx:id="L_MiddleRight" alignment="CENTER" layoutX="146.0" layoutY="110.0" prefHeight="106.0" prefWidth="136.0" text="L_MiddleRight" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-               <Label fx:id="L_BottomLeft" alignment="CENTER" layoutX="281.0" layoutY="110.0" prefHeight="106.0" prefWidth="136.0" text="L_BottomLeft" GridPane.rowIndex="2" />
-               <Label fx:id="L_BottomCenter" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="106.0" prefWidth="136.0" text="L_BottomCenter" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-               <Label fx:id="L_BottomRight" alignment="CENTER" layoutX="146.0" layoutY="210.0" prefHeight="106.0" prefWidth="136.0" text="L_BottomRight" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="L_TopLeft" mnemonicParsing="false" onAction="#onTopLeft" prefHeight="126.0" prefWidth="152.0" text="L_TopLeft" />
+            <Button fx:id="L_TopCenter" mnemonicParsing="false" onAction="#onTopCenter" prefHeight="126.0" prefWidth="152.0" text="L_TopCenter" GridPane.columnIndex="1" />
+            <Button fx:id="L_TopRight" layoutX="133.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTopRight" prefHeight="126.0" prefWidth="152.0" text="L_TopRight" GridPane.columnIndex="2" />
+            <Button fx:id="L_MiddleCenter" layoutX="255.0" layoutY="10.0" mnemonicParsing="false" onAction="#onMiddleCenter" prefHeight="126.0" prefWidth="152.0" text="L_MiddleCenter" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="L_MiddleLeft" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onMiddleLeft" prefHeight="126.0" prefWidth="152.0" text="L_MiddleLeft" GridPane.rowIndex="1" />
+            <Button fx:id="L_BottomLeft" layoutX="10.0" layoutY="99.0" mnemonicParsing="false" onAction="#onBottomLeft" prefHeight="126.0" prefWidth="152.0" text="L_BottomLeft" GridPane.rowIndex="2" />
+            <Button fx:id="L_MiddleRight" layoutX="255.0" layoutY="99.0" mnemonicParsing="false" onAction="#onMiddleRight" prefHeight="126.0" prefWidth="152.0" text="L_MiddleRight" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="L_BottomCenter" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBottomCenter" prefHeight="126.0" prefWidth="152.0" text="L_BottomCenter" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="L_BottomRight" layoutX="133.0" layoutY="187.0" mnemonicParsing="false" onAction="#onBottomRight" prefHeight="126.0" prefWidth="152.0" text="L_BottomRight" GridPane.columnIndex="2" GridPane.rowIndex="2" />
            </children>
        </GridPane>
    </center>
@@ -38,4 +38,22 @@
          </font>
       </Label>
    </top>
+   <right>
+      <Pane prefHeight="361.0" prefWidth="233.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="23.0" prefWidth="82.0" text="Player to play:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="L_Player" layoutX="41.0" layoutY="37.0" />
+            <Label layoutX="151.0" layoutY="17.0" prefHeight="17.0" prefWidth="60.0" text="Debug" />
+            <TextArea fx:id="T_DebugArea" layoutX="107.0" layoutY="37.0" prefHeight="225.0" prefWidth="126.0">
+               <font>
+                  <Font name="Monospaced Regular" size="12.0" />
+               </font>
+            </TextArea>
+         </children>
+      </Pane>
+   </right>
 </BorderPane>

@@ -64,7 +64,7 @@ object TicTacToe {
     * @return
     */
   def apply(): TicTacToe = {
-    TicTacToe(null)
+    TicTacToe(Map())
   }
 
   /**
@@ -76,7 +76,11 @@ object TicTacToe {
     * @return
     */
   def play(t: TicTacToe, moves: Seq[TMove]): TicTacToe = {
-    ???
+    for(x <- moves){
+      if(t.nextPlayer == PlayerA) t.turn(x, PlayerB)
+      else t.turn(x, PlayerA)
+    }
+    t
   }
 
   /**
@@ -172,7 +176,6 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * possible turns is taken and added to the set.
     */
   // Player wird nicht gewechselt
-  // turn-function anstatt selber
   lazy val nextGames: Set[TicTacToe] = {
     var set: Set[TicTacToe] = Set(null)
     for(t <- remainingMoves){

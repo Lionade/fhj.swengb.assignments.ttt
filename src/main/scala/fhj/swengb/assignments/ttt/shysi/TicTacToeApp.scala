@@ -4,7 +4,7 @@ import java.net.URL
 import java.util.ResourceBundle
 import javafx.application.Application
 import javafx.fxml.{FXML, FXMLLoader, Initializable}
-import javafx.scene.control.{Label, TextField}
+import javafx.scene.control.{Label, Button, ScrollPane, TextArea}
 import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
 
@@ -23,11 +23,8 @@ object ttt {
                      //               MiddleLeft -> PlayerB, MiddleCenter -> PlayerA, MiddleRight -> PlayerB,
                      //               BottomLeft -> PlayerB, BottomCenter -> PlayerA, BottomRight -> PlayerB)
     val t = TicTacToe(m)
-    println(t.asString())
-    //val test = t.remainingMoves
-    val test = t.winner
-    var ka = 3
-    //Application.launch(classOf[ttt], args: _*)
+    //println(t.asString())
+    Application.launch(classOf[ttt], args: _*)
   }
 }
 
@@ -61,10 +58,56 @@ class ttt extends javafx.application.Application{
 }
 
 class tttController extends Initializable{
-  @FXML var L_TopLeft: Label = _
+  var t = TicTacToe()
+  var outstring: String = ""
+
+  @FXML var L_TopLeft: Button = _
+  @FXML var L_TopCenter: Button = _
+  @FXML var L_TopRight: Button = _
+  @FXML var L_MiddleLeft: Button = _
+  @FXML var L_MiddleCenter: Button = _
+  @FXML var L_MiddleRight: Button = _
+  @FXML var L_BottomLeft: Button = _
+  @FXML var L_BottomCenter: Button = _
+  @FXML var L_BottomRight: Button = _
+
+  @FXML var L_Player: Label = _
+  @FXML var P_DebugPane: ScrollPane = _
+  @FXML var T_DebugArea: TextArea = _
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
   }
 
-  @FXML def testClick(): Unit = L_TopLeft.setText("O")
+  //Shows informations about the current game
+  def debug(): Unit = {
+    if(t.nextPlayer == PlayerA) L_Player.setText("PlayerA") else L_Player.setText("PlayerB")
+    outstring += t.asString()
+    T_DebugArea.setText(outstring)
+  }
+
+  def submit(b: Button, move: TMove): Unit ={
+    if(t.remainingMoves.contains(move)){
+      if(t.nextPlayer == PlayerA) b.setText("O") else b.setText("X")
+      t = t.turn(move, t.nextPlayer)
+      // Check if gameover
+      debug()
+    }
+  }
+
+  // Resets the game
+  def reset(): Unit ={
+    t = TicTacToe(Map())
+    T_DebugArea.clear()
+  }
+
+  @FXML def onTopLeft(): Unit = submit(L_TopLeft, TopLeft)
+  @FXML def onTopCenter(): Unit = submit(L_TopCenter, TopCenter)
+  @FXML def onTopRight(): Unit = submit(L_TopRight, TopRight)
+  @FXML def onMiddleLeft(): Unit = submit(L_MiddleLeft, MiddleLeft)
+  @FXML def onMiddleCenter(): Unit = submit(L_MiddleCenter, MiddleCenter)
+  @FXML def onMiddleRight(): Unit = submit(L_MiddleRight, MiddleRight)
+  @FXML def onBottomLeft(): Unit = submit(L_BottomLeft, BottomLeft)
+  @FXML def onBottomCenter(): Unit = submit(L_BottomCenter, BottomCenter)
+  @FXML def onBottomRight(): Unit = submit(L_BottomRight, BottomRight)
+
 }
