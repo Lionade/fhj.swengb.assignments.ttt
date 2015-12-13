@@ -19,15 +19,15 @@
                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
            </rowConstraints>
            <children>
-            <Button fx:id="L_TopLeft" mnemonicParsing="false" onAction="#onTopLeft" prefHeight="126.0" prefWidth="152.0" text="L_TopLeft" />
-            <Button fx:id="L_TopCenter" mnemonicParsing="false" onAction="#onTopCenter" prefHeight="126.0" prefWidth="152.0" text="L_TopCenter" GridPane.columnIndex="1" />
-            <Button fx:id="L_TopRight" layoutX="133.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTopRight" prefHeight="126.0" prefWidth="152.0" text="L_TopRight" GridPane.columnIndex="2" />
-            <Button fx:id="L_MiddleCenter" layoutX="255.0" layoutY="10.0" mnemonicParsing="false" onAction="#onMiddleCenter" prefHeight="126.0" prefWidth="152.0" text="L_MiddleCenter" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="L_MiddleLeft" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onMiddleLeft" prefHeight="126.0" prefWidth="152.0" text="L_MiddleLeft" GridPane.rowIndex="1" />
-            <Button fx:id="L_BottomLeft" layoutX="10.0" layoutY="99.0" mnemonicParsing="false" onAction="#onBottomLeft" prefHeight="126.0" prefWidth="152.0" text="L_BottomLeft" GridPane.rowIndex="2" />
-            <Button fx:id="L_MiddleRight" layoutX="255.0" layoutY="99.0" mnemonicParsing="false" onAction="#onMiddleRight" prefHeight="126.0" prefWidth="152.0" text="L_MiddleRight" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button fx:id="L_BottomCenter" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBottomCenter" prefHeight="126.0" prefWidth="152.0" text="L_BottomCenter" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="L_BottomRight" layoutX="133.0" layoutY="187.0" mnemonicParsing="false" onAction="#onBottomRight" prefHeight="126.0" prefWidth="152.0" text="L_BottomRight" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="B_TopLeft" mnemonicParsing="false" onAction="#onTopLeft" prefHeight="126.0" prefWidth="152.0" />
+            <Button fx:id="B_TopCenter" mnemonicParsing="false" onAction="#onTopCenter" prefHeight="126.0" prefWidth="152.0" GridPane.columnIndex="1" />
+            <Button fx:id="B_TopRight" layoutX="133.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTopRight" prefHeight="126.0" prefWidth="152.0" GridPane.columnIndex="2" />
+            <Button fx:id="B_MiddleCenter" layoutX="255.0" layoutY="10.0" mnemonicParsing="false" onAction="#onMiddleCenter" prefHeight="126.0" prefWidth="152.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="B_MiddleLeft" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onMiddleLeft" prefHeight="126.0" prefWidth="152.0" GridPane.rowIndex="1" />
+            <Button fx:id="B_BottomLeft" layoutX="10.0" layoutY="99.0" mnemonicParsing="false" onAction="#onBottomLeft" prefHeight="126.0" prefWidth="152.0" GridPane.rowIndex="2" />
+            <Button fx:id="B_MiddleRight" layoutX="255.0" layoutY="99.0" mnemonicParsing="false" onAction="#onMiddleRight" prefHeight="126.0" prefWidth="152.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="B_BottomCenter" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBottomCenter" prefHeight="126.0" prefWidth="152.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="B_BottomRight" layoutX="133.0" layoutY="187.0" mnemonicParsing="false" onAction="#onBottomRight" prefHeight="126.0" prefWidth="152.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
            </children>
        </GridPane>
    </center>
@@ -53,7 +53,19 @@
                   <Font name="Monospaced Regular" size="12.0" />
                </font>
             </TextArea>
+            <Label fx:id="L_GameOver" layoutX="14.0" layoutY="194.0" prefHeight="25.0" prefWidth="91.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </right>
+   <bottom>
+      <Pane prefHeight="95.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="29.0" layoutY="35.0" mnemonicParsing="false" onAction="#onNewGame" text="Start New Game" />
+         </children>
+      </Pane>
+   </bottom>
 </BorderPane>
