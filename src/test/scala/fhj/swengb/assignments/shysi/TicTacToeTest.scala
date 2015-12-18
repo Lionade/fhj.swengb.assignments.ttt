@@ -1,5 +1,6 @@
-package fhj.swengb.assignments.ttt.shysi
+package fhj.swengb.assignments.shysi
 
+import fhj.swengb.assignments.ttt.shysi._
 import org.junit.Assert._
 import org.junit.Test
 
