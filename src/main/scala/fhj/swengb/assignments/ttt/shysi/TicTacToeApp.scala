@@ -92,7 +92,6 @@ class tttController extends Initializable{
 
   // Resets the game
   def reset(): Unit ={
-    // Noch random machen
     t = TicTacToe(Map(), PlayerA)
     T_DebugArea.clear(); outstring = ""
     clearbuttons()
